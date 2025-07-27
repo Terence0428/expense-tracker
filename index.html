@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>家庭花費月曆（純前端版）</title>
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>家庭花費月曆</h1>
+    <p>採用 Google Sheets 儲存資料，無需後端伺服器</p>
+  </header>
+  <main>
+    <section id="summary-section" class="summary">
+      <div id="summary-content"><p>載入摘要中…</p></div>
+    </section>
+    <div id="calendar"></div>
+  </main>
+  <button id="add-expense-btn" class="floating-btn">新增支出</button>
+
+  <!-- 新增支出對話框 -->
+  <div id="expense-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>新增支出</h2>
+      <form id="expense-form">
+        <label for="expense-date">日期</label>
+        <input type="date" id="expense-date" name="date" required>
+
+        <label for="expense-amount">金額 (NT$)</label>
+        <input type="number" id="expense-amount" name="amount" required step="0.01" min="0">
+
+        <label for="expense-person">支付者</label>
+        <select id="expense-person" name="person" required>
+          <option value="Terence">Terence</option>
+          <option value="Rita">Rita</option>
+        </select>
+
+        <label for="expense-note">備註 (可填)</label>
+        <textarea id="expense-note" name="note" rows="2"></textarea>
+
+        <div class="form-actions">
+          <button type="button" id="cancel-btn">取消</button>
+          <button type="submit">儲存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
